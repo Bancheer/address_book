@@ -151,17 +151,17 @@ class Controller(cmd.Cmd):
     def loading(self):
         self.book.load()
 
-    def exit(self):
-        self.book.dump()
-        return True
-
-    def do_search(self, arg):
+    def search(self, arg):
         results = self.book.find(arg)
         if results:
             for record in results:
                 print(record)
         else:
             print("No records found.")
+
+    def exit(self):
+        self.book.dump()
+        return True
 
 if __name__ == "__main__":
     controller = Controller()
